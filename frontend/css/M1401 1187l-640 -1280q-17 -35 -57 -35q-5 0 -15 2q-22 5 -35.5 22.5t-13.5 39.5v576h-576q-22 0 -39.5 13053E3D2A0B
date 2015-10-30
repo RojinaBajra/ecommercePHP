@@ -1,0 +1,107 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <title>PremiumTheme</title>
+   
+    
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/fonts.css" />
+    
+    <script src="js/jquery-1.6.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/jquery.selectbox-0.2.js"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <script src="js/base.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+	    function call() {
+		  var msg   = $('#formx').serialize();
+			$.ajax({
+			  type: 'POST',
+			  url: 'contacts.php',
+			  data: msg,
+			  success: function(data) {
+				$('.popup-wrapper .popup-block').html(data);
+				$('.popup-wrapper').fadeIn(300);
+				$('.captcha').attr('src', 'captcha.php?'+(new Date()).getTime());
+			  },
+			  error:  function(xhr, str){
+					alert('Возникла ошибка: ' + xhr.responseCode);
+				}
+			});
+		}
+    </script>
+    
+<link rel=”icon” href=”../../../../favicon.ico” type=”image/x-icon”>
+<link rel=”shortcut icon” href=”../../../../favicon.ico” type=”image/x-icon”>
+</head>
+<body>
+        
+	<!-- wrapper -->
+	<div id="wrapper">
+	            
+	    <!-- header --><!-- end header -->
+  
+	    <!-- content -->
+	    <div id="content">
+	        	        
+	        <!-- contacts page -->
+	        <div class="inner-block contacts-page">
+		        
+		        <h1>PremiumTheme Support</h1>
+		        
+		        <!-- form -->
+		        <div class="form-block left">
+			        <form method="POST" id="formx" action="javascript:void(null);" onsubmit="call()">
+				        <div class="line">
+					        <label>Name:</label>
+					        <input type="text" class="text" name="user_name"/>
+				        </div>
+				        <div class="line">
+					        <label>E-mail:</label>
+					        <input type="text" class="text" name="email"/>
+				        </div>
+				        <div class="line">
+					        <label>Massege:</label>
+					        <textarea cols="0" rows="0" name="message"></textarea>
+				        </div>
+				        <div class="line captcha">
+					        <label>Captcha:</label>
+					        <div class="captcha-img">
+						        <img src="captcha.php" class="captcha" /> 
+					        </div>
+					        <input type="text" class="text" name="captcha"/>
+				        </div>
+				        <div class="button-box">
+					        <input type="submit" class="button blue" value="Send" />
+				        </div>
+			        </form>
+		        </div>
+		        <!-- end form -->
+		        
+		        <!-- info -->
+		        <div class="info-block right">
+		          <p>If you have  any questions or suggestions concerning the theme, I will happy to answer them.</p>
+<div class="phone"></div>    
+		        </div>
+		        <!-- end info -->
+		        
+		        <div class="clear"></div>
+		        
+	        </div>
+	        <!-- end contacts page -->
+	        
+	    </div>
+	    <!-- end content -->
+	            
+	</div>
+	<!-- end wrapper -->
+	
+	<!-- footer -->
+	
+            
+</body>
+</html>
